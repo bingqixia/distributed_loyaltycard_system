@@ -36,16 +36,14 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Spring Cloud Template微服务项目")
-                .description("文档地址：https://github.com/TyCoding/cloud-template")
-                .termsOfServiceUrl("http://tycoding.cn/")
-                .contact(new Contact("tycoding", "https://tycoding.cn", ""))
+                .title("Distributed Loyalty Card System - Backend")
+                .description("Author: Group 6")
                 .version("v1.0")
                 .build();
     }
 
     private List<ApiKey> securitySchemes() {
-        //设置请求头信息
+        //set auth in header
         List<ApiKey> result = new ArrayList<>();
         ApiKey apiKey = new ApiKey("Authorization", "Authorization", "header");
         result.add(apiKey);
@@ -53,7 +51,7 @@ public class SwaggerConfig {
     }
 
     private List<SecurityContext> securityContexts() {
-        //设置需要登录认证的路径
+        //the routes that need auth
         List<SecurityContext> result = new ArrayList<>();
         result.add(getContextByPath("^(?!auth).*$"));
         return result;
