@@ -27,7 +27,7 @@
         <module>lc-gateway</module>
         <module>lc-zipkin</module>
         <module>lc-monitor</module>
-        <module>lc-admin</module>
+        <module>lc-user</module>
         <module>lc-common</module>
     </modules>
 

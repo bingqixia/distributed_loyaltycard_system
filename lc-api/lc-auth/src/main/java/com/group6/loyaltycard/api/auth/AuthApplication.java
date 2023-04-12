@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 /**
  *  authentication
  */
-@EnableFeignClients("com.group6.loyaltycard.api.admin.api.feign")
+@EnableFeignClients("com.group6.loyaltycard.api.user.api.feign")
 @EnableEurekaClient
 @SpringBootApplication
 public class AuthApplication {

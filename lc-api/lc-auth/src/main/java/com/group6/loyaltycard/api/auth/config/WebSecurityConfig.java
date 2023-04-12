@@ -1,6 +1,6 @@
 package com.group6.loyaltycard.api.auth.config;
 
-import com.group6.loyaltycard.api.admin.api.config.service.UserDetailsServiceImpl;
+import com.group6.loyaltycard.api.user.api.config.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

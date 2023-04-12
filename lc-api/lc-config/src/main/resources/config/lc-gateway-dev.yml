@@ -3,9 +3,9 @@ zuul:
     lc-auth:
       path: /api/auth/**
       serviceId: lc-auth
-    lc-admin:
-      path: /api/admin/**
-      serviceId: lc-admin-biz
+    lc-user:
+      path: /api/user/**
+      serviceId: lc-user-biz
 #    lc-monitor:
 #      path: /api/monitor/**
 #      serviceId: lc-monitor

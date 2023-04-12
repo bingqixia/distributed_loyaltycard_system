@@ -4,17 +4,19 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.group6.loyaltycard</groupId>
-        <artifactId>lc-api</artifactId>
+        <artifactId>lc-user</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>lc-auth</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>lc-auth</name>
+
+    <artifactId>lc-user-biz</artifactId>
     <packaging>jar</packaging>
 
     <properties>
         <spring-boot-mybatis.version>2.0.1</spring-boot-mybatis.version>
         <hikaricp.version>3.3.1</hikaricp.version>
+        <swagger.version>2.9.2</swagger.version>
+        <swagger-annotations.version>1.5.21</swagger-annotations.version>
+        <swagger-models.version>1.5.21</swagger-models.version>
     </properties>
 
     <dependencies>
@@ -23,6 +25,29 @@
             <groupId>com.group6.loyaltycard</groupId>
             <artifactId>lc-user-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!-- Swagger2 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <!-- use the latest version Swagger2 (2.9.2) to avoid NumberFormatException error need following two dependencies -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger-annotations.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+            <version>${swagger-models.version}</version>
         </dependency>
 
         <!-- HikariCP connection pool -->
@@ -50,19 +75,11 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Mybatis -->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${spring-boot-mybatis.version}</version>
-        </dependency>
-
-        <!-- Web -->
+        <!-- Web dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <!-- config center client -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -76,7 +93,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.group6.loyaltycard.api.auth.AuthApplication</mainClass>
+                    <mainClass>com.group6.loyaltycard.api.user.biz.UserBizApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

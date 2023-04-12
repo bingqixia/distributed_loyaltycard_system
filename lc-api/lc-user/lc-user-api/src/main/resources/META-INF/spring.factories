@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.group6.loyaltycard.api.user.api.feign.fallback.RemoteUserServiceFallbackImpl
