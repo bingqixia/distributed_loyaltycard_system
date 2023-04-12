@@ -1,0 +1,17 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+  zipkin:
+    base-url: http://lc-zipkin
+  boot:
+    admin:
+      client:
+        url: http://localhost:5001
+
+# Expose monitoring endpoint
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

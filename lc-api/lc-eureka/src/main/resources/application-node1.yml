@@ -1,0 +1,31 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: lc-eureka
+eureka:
+  instance:
+    hostname: lc-eureka-node1
+  client:
+    serviceUrl:
+      defaultZone: http://lc-eureka-node2:8762/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
+#server:
+#  port: 10001
+#
+#spring:
+#  application:
+#    name: lc-eureka
+#
+#eureka:
+#  instance:
+#    hostname: lc-eureka-node1
+#    prefer-ip-address: true
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#    service-url:
+#      defaultZone: http://lc-eureka-node1:10002/eureka/
+##      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

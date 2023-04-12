@@ -1,0 +1,23 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: lc-config
+  main:
+    allow-bean-definition-overriding: true
+
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config/
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://lc-eureka-node1:8761/eureka/,http://lc-eureka-node2:8762/eureka/

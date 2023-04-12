@@ -1,0 +1,13 @@
+server:
+  port: 8762
+spring:
+  application:
+    name: lc-eureka
+eureka:
+  instance:
+    hostname: lc-eureka-node2
+  client:
+    serviceUrl:
+      defaultZone: http://lc-eureka-node1:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true

@@ -1,0 +1,18 @@
+zuul:
+  routes:
+    lc-auth:
+      path: /api/auth/**
+      serviceId: lc-auth
+    lc-admin:
+      path: /api/admin/**
+      serviceId: lc-admin-biz
+#    lc-monitor:
+#      path: /api/monitor/**
+#      serviceId: lc-monitor
+#    lc-zipkin:
+#      path: /api/zipkin/**
+#      serviceId: lc-zipkin
+#    lc-eureka:
+#      path: /api/eureka/**
+#      serviceId: lc-eureka
+

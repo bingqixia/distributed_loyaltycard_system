@@ -1,0 +1,34 @@
+server:
+  port: 4000
+
+spring:
+  application:
+    name: lc-auth
+  main:
+    allow-bean-definition-overriding: true
+
+  profiles:
+    active: dev
+  cloud:
+    config:
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+
+# feign
+feign:
+  hystrix:
+    enabled: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://lc-eureka-node1:8761/eureka/,http://lc-eureka-node2:8762/eureka/
+
+# Exposing Monitoring Endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
