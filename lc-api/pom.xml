@@ -28,6 +28,8 @@
         <module>lc-zipkin</module>
         <module>lc-monitor</module>
         <module>lc-user</module>
+        <module>lc-transaction</module>
+        <module>lc-points</module>
         <module>lc-common</module>
     </modules>
 
