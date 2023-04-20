@@ -10,7 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableEurekaClient
 @SpringBootApplication
-@MapperScan("com.group6.loyaltycard.api.points.user")
+@MapperScan("com.group6.loyaltycard.api.points.repository")
 public class PointsApplication {
 
 	public static void main(String[] args) {

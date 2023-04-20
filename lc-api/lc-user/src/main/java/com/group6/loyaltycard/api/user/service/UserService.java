@@ -1,5 +1,5 @@
-package com.group6.loyaltycard.api.points.user;
-
+package com.group6.loyaltycard.api.user.service;
+import com.group6.loyaltycard.api.user.repository.UserMapper;
 import java.util.List;
 
 public interface UserService {

@@ -1,4 +1,4 @@
-package com.group6.loyaltycard.api.points.user;
+package com.group6.loyaltycard.api.user.repository;
 
 import org.apache.ibatis.annotations.*;
 
