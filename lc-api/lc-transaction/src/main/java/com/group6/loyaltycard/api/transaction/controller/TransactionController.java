@@ -35,8 +35,9 @@ public class TransactionController {
         return paymentFeignService.helloPayment(name);
     }
 
-    @GetMapping("/hello/{name}")
-    public String hello(@PathVariable String name) {
-        return "hello " + name + ", this is lc-transaction";
+    @GetMapping("/hello")
+    public String hello(int userId, int amount) {
+
+        return "hello, userId: " + userId + "amount:" + amount + ", this is lc-transaction";
     }
 }
