@@ -1,33 +1,22 @@
-# Distributed Loyalty Card System Backend Services
+lc-eureka 8761
+lc-eureka-replica 8762
+lc-config 8888
+lc-zipkin 8899
+lc-gateway 9999
+lc-monitor 3000
 
-## Local Development environment
-1. Modify `hosts` file，add（you can use [SwitchHosts](http://oldj.github.io/SwitchHosts/))
+lc-payment 5001
+lc-points 5002
+lc-transaction 5003
+lc-user 5004
 
-```
-127.0.0.1 lc-eureka
-127.0.0.1 lc-mysql
-127.0.0.1 lc-auth
-```
-
-2. Modify database connection config: `lc-user-biz-dev.yml` and `lc-auth-dev.yml` under the dir `lc-config/src/main/resources/`
-
-3. mysql create database
-```
--- mysql -u root -p
--- CREATE DATABASE loyaltycard;
-```
-4. import and execute `base.sql`, to create database
-
-5. Start the following modules in sequence
-
-```
-1. EurekaApplication.java -- Service Registry
-2. ConfigApplication.java -- Service Configuration Center
-3. MonitorApplication.java -- Spring Boot Admin Monitor
-4. ZipkinApplication.java -- Zipkin link monitoring
-5. AdminBizApplication.java -- System Management Module
-6. AuthApplication.java -- Authorization Module
-7. GatewayApplication.java -- Zuul Gateway
-```
-
-
+run:
+lc-eureka
+lc-eureka-replica 
+lc-config
+lc-zipkin
+lc-users
+lc-points
+lc-payment
+lc-transaction
+lc-gateway

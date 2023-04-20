@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.group6.loyaltycard</groupId>
         <artifactId>lc-api</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>lc-gateway</artifactId>
+
+    <artifactId>lc-zuul</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>lc-gateway</name>
+    <name>lc-zuul</name>
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- Zuul gateway -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
-        <!-- config center client -->
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
         </dependency>
     </dependencies>
 
@@ -31,7 +46,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.group6.loyaltycard.api.gateway.GatewayApplication</mainClass>
+                    <mainClass>com.group6.loyaltycard.api.zuul.ZuulApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

@@ -1,0 +1,65 @@
+server:
+  port: 5004
+
+spring:
+  application:
+    name: lc-user
+  main:
+    allow-bean-definition-overriding: true
+  zipkin:
+    base-url: http://lc-zipkin:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+  profiles:
+    active: dev
+  cloud:
+    config:
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+
+# feign
+feign:
+  hystrix:
+    enabled: true
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://lc-eureka-node1:8761/eureka/,http://lc-eureka-node2:8762/eureka/
+
+# Exposing Monitoring Endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+
+#server:
+#  port: 9002
+#
+#spring:
+#  application:
+#    name: lc-points
+#  zipkin:
+#    base-url: http://localhost:9411
+#  sleuth:
+#    sampler:
+#      probability: 1.0
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:9004
+#
+#feign:
+#  hystrix:
+#    enabled: true
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/

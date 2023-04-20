@@ -1,12 +1,16 @@
 server:
-  port: 0
+  port: 5002
 
 spring:
   application:
-    name: lc-points-biz
+    name: lc-points
   main:
     allow-bean-definition-overriding: true
-
+  zipkin:
+    base-url: http://lc-zipkin:9411
+  sleuth:
+    sampler:
+      probability: 1.0
   profiles:
     active: dev
   cloud:
@@ -34,3 +38,28 @@ management:
       exposure:
         include: '*'
 
+
+
+#server:
+#  port: 9002
+#
+#spring:
+#  application:
+#    name: lc-points
+#  zipkin:
+#    base-url: http://localhost:9411
+#  sleuth:
+#    sampler:
+#      probability: 1.0
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:9004
+#
+#feign:
+#  hystrix:
+#    enabled: true
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
