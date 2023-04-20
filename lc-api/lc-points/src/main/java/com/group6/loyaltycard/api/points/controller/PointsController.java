@@ -27,7 +27,6 @@ public class PointsController {
 //        userService.insert(user);
         List<UserMapper.User> resp =  userService.findAll();
 
-//        Logger.debug("DB Suss message, first user: " + resp.get(0).getUserName());
         return "DB Suss message first user is :" + resp.get(0).getUserName() + ", by lc-points";
 //        userService.findAll();
     }
