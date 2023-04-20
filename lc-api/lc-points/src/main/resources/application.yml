@@ -11,6 +11,34 @@ spring:
   sleuth:
     sampler:
       probability: 1.0
+  datasource-master:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://ec2-18-207-1-99.compute-1.amazonaws.com:3306/test1?characterEncoding=utf8&useSSL=false
+    username: root
+    password: Admin1234##
+  datasource-slave:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://ec2-54-234-6-236.compute-1.amazonaws.com:3306/test1?characterEncoding=utf8&useSSL=false
+    username: root
+    password: Admin1234##
+
+#  datasource:
+#    master:
+#      type: com.zaxxer.hikari.HikariDataSource
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      url: jdbc:mysql://ec2-18-207-1-99.compute-1.amazonaws.com:3306/test1?characterEncoding=utf8&useSSL=false
+#      username: root
+#      password: Admin1234##
+#    slave:
+#      type: com.zaxxer.hikari.HikariDataSource
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      url: jdbc:mysql://ec2-54-234-6-236.compute-1.amazonaws.com:3306/test1?characterEncoding=utf8&useSSL=false
+#      username: root
+#      password: Admin1234##
+
+
   profiles:
     active: dev
   cloud:

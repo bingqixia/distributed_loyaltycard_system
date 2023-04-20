@@ -38,6 +38,6 @@ zuul:
 #      path: /api/admin/**
 #      # service name
 #      serviceId: lc-admin
-#    lc-points:
+#    lc-point-dev.yml:
 #      path: /api/points/**
 #      serviceId: lc-points
