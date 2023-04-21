@@ -33,3 +33,7 @@ zuul:
   #The header information that needs to be ignored will not be propagated to other services
   sensitive-headers: Access-Control-Allow-Origin
   ignored-headers: Access-Control-Allow-Origin,H-APP-Id,Token,APPToken
+
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 10000

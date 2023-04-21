@@ -1,8 +1,6 @@
 package com.group6.loyaltycard.api.points.repository;
 
 import org.apache.ibatis.annotations.*;
-
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;

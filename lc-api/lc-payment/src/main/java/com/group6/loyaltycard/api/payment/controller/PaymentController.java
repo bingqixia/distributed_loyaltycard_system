@@ -1,5 +1,7 @@
 package com.group6.loyaltycard.api.payment.controller;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,14 +15,27 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    @GetMapping("/py/{name}")
+    @GetMapping("/test/{name}")
     public String hello(@PathVariable String name) {
         return "hello " + name + ", this is lc-payments";
     }
 
     @PostMapping("/addPayment")
-    public String addPaymentTransaction(@RequestBody PaymentMapper.Orders orders) {
-        paymentService.insert(orders);
+    public String addPaymentTransaction(@RequestBody String json) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            PaymentMapper.Orders order = objectMapper.readValue(json, PaymentMapper.Orders.class);
+            paymentService.insert(json);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
         return "The payment transaction has been inserted into the database successfully";
     }
+
+//    @PostMapping("/addPayment")
+//    public String addPaymentTransaction(@RequestBody PaymentMapper.Orders orders) {
+//        paymentService.insert(orders);
+//        return "The payment transaction has been inserted into the database successfully";
+//    }
 }

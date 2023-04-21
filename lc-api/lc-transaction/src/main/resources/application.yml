@@ -22,6 +22,15 @@ spring:
 feign:
   hystrix:
     enabled: true
+    command:
+      default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 10000
+    threadpool:
+      default:
+        coreSize: 10
 
 eureka:
   instance:

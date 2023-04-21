@@ -10,6 +10,8 @@ import java.util.List;
  */
 
 public interface PaymentService {
+
+
     Orders findByOrderId(Integer orderId);
 
     List<Orders> findByUserId(Integer userId);
@@ -17,6 +19,8 @@ public interface PaymentService {
     List<Orders> findAll();
 
     int insert(Orders credits);
+
+    int insert(String jsonStr);
 
     int update(Orders credits);
 

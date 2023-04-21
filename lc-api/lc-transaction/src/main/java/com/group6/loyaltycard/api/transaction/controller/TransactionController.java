@@ -1,11 +1,13 @@
 package com.group6.loyaltycard.api.transaction.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.group6.loyaltycard.api.transaction.feign.service.TransactionPaymentFeignService;
 import com.group6.loyaltycard.api.transaction.feign.service.TransactionPointsFeignService;
+import com.group6.loyaltycard.api.transaction.repository.PaymentJson;
+import com.group6.loyaltycard.api.transaction.repository.TransactionJson;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TransactionController {
@@ -35,9 +37,30 @@ public class TransactionController {
         return paymentFeignService.helloPayment(name);
     }
 
-    @GetMapping("/hello")
-    public String hello(int userId, int amount) {
+//    @GetMapping("/hello")
+//    public String hello(int userId, int amount) {
+//
+//        return "hello, userId: " + userId + "amount:" + amount + ", this is lc-transaction";
+//    }
 
-        return "hello, userId: " + userId + "amount:" + amount + ", this is lc-transaction";
+    @PostMapping("/addTransaction")
+    public String addTransactionPayment(@RequestBody TransactionJson transaction) {
+        String jsonString = "";
+        PaymentJson paymentJson = new PaymentJson(
+                transaction.getOrderId(),
+                transaction.getUserId(),
+                transaction.getCardId(),
+                transaction.getOrderTime(),
+                transaction.getAmounts()
+        );
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            jsonString = objectMapper.writeValueAsString(paymentJson);
+        } catch (JsonProcessingException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println(jsonString);
+        return paymentFeignService.addPaymentTransaction(jsonString);
     }
 }
