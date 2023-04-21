@@ -3,9 +3,7 @@ package com.group6.loyaltycard.api.user.controller;
 import com.group6.loyaltycard.api.user.repository.UserMapper;
 import com.group6.loyaltycard.api.user.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,5 +30,11 @@ public class UserController {
     @GetMapping("/hello/{name}")
     public String hello(@PathVariable String name) {
         return "hello " + name + ", this is lc-user";
+    }
+
+    @PostMapping("/addUser")
+    public String addPaymentTransaction(@RequestBody UserMapper.User users) {
+        userService.insert(users);
+        return "The user transaction has been inserted into the database successfully";
     }
 }

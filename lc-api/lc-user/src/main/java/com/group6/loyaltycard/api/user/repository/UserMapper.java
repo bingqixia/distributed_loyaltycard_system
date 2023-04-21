@@ -13,11 +13,11 @@ public interface UserMapper {
     @Select("SELECT * FROM User")
     List<User> findAll();
 
-    @Insert("INSERT INTO User (userName, email, cardId, region, regionName) VALUES (#{userName}, #{email}, #{cardId}, #{region}, #{regionName})")
+    @Insert("INSERT INTO User (userName, email, cardId, region, regionName, allCredits) VALUES (#{userName}, #{email}, #{cardId}, #{region}, #{regionName}, #{allCredits})")
     @Options(useGeneratedKeys = true, keyProperty = "userId", keyColumn = "userId")
     int insert(User user);
 
-    @Update("UPDATE User SET userName = #{userName}, email = #{email}, cardId = #{cardId}, region = #{region}, regionName = #{regionName} WHERE userId = #{userId}")
+    @Update("UPDATE User SET userName = #{userName}, email = #{email}, cardId = #{cardId}, region = #{region}, regionName = #{regionName}, allCredits=#{allCredits} WHERE userId = #{userId}")
     int update(User user);
 
     @Delete("DELETE FROM User WHERE userId = #{userId}")
@@ -73,6 +73,9 @@ public interface UserMapper {
         public void setRegionName(String regionName) {
             this.regionName = regionName;
         }
+        public Integer allCredits;
+        public Integer getAllCredits() {return allCredits;}
+        public void setAllCredits(Integer allCredits) {this.allCredits = allCredits;}
 
         private String userName;
         private String email;
