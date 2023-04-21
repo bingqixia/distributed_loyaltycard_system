@@ -19,7 +19,7 @@ public class PaymentController {
 
     @GetMapping("/hello/{name}")
     public String hello(@PathVariable String name) {
-        return "hello " + name + ", this is lc-points";
+        return "hello " + name + ", this is lc-payment";
     }
 
     @GetMapping("/query/{userId}")
