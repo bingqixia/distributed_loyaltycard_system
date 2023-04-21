@@ -1,13 +1,13 @@
 package com.group6.loyaltycard.api.payment;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LcPaymentApplicationTests {
+public class PaymentApplicationTests {
 
     @Test
-    void contextLoads() {
+    public void contextLoads() {
     }
 
 }
