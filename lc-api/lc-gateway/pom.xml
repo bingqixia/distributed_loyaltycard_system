@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>lc-zuul</artifactId>
+    <artifactId>lc-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>lc-zuul</name>
+    <name>lc-gateway</name>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -46,7 +46,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.group6.loyaltycard.api.zuul.ZuulApplication</mainClass>
+                    <mainClass>com.group6.loyaltycard.api.gateway.GatewayApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
