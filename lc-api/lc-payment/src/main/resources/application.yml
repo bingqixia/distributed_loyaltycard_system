@@ -19,11 +19,11 @@ spring:
       profile: ${spring.profiles.active}
   datasource:
     master:
-      jdbc-url: jdbc:mysql://ec2-18-207-1-99.compute-1.amazonaws.com:3306/test1?characterEncoding=utf8&useSSL=false
+      jdbc-url: jdbc:mysql://ec2-18-207-1-99.compute-1.amazonaws.com:3306/test1?useSSL=false&characterEncoding=utf8&serverTimezone=Europe/Dublin
       username: root
       password: Admin1234##
     slave:
-      jdbc-url: jdbc:mysql://ec2-54-234-6-236.compute-1.amazonaws.com:3306/test1?characterEncoding=utf8&useSSL=false
+      jdbc-url: jdbc:mysql://ec2-54-234-6-236.compute-1.amazonaws.com:3306/test1?useSSL=false&characterEncoding=utf8&serverTimezone=Europe/Dublin
       username: root
       password: Admin1234##
   mybatis:

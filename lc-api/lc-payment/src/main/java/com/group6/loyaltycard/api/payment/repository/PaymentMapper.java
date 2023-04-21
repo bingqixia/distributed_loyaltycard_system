@@ -2,6 +2,8 @@ package com.group6.loyaltycard.api.payment.repository;
 
 import org.apache.ibatis.annotations.*;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -61,7 +63,8 @@ public interface PaymentMapper {
         }
 
         public void setOrderTime(Date orderTime) {
-            this.orderTime = orderTime;
+            LocalDateTime currentDateTime = LocalDateTime.now();
+            this.orderTime = Timestamp.valueOf(currentDateTime);
         }
 
         public Integer getAmounts() {
