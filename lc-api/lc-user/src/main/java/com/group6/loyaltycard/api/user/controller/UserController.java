@@ -37,4 +37,17 @@ public class UserController {
         userService.insert(users);
         return "The user transaction has been inserted into the database successfully";
     }
+
+    @PostMapping("/updateUser")
+    public String updatePaymentTransaction(@RequestBody UserMapper.User users) {
+        userService.update(users);
+        return "The user transaction has been updated into the database successfully";
+    }
+
+    @GetMapping("/findUser/{id}")
+    public String findPaymentTransaction(@PathVariable Integer id) {
+        UserMapper.User users = userService.findById(id);
+        Integer credits = users.getAllCredits();
+        return "The user find successfully, credits: " + credits;
+    }
 }
