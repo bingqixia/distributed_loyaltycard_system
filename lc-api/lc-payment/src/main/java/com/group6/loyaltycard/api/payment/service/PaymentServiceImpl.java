@@ -43,18 +43,18 @@ public class PaymentServiceImpl implements PaymentService {
     public int insert(Orders orders) {
         return paymentMapper.insert(orders);
     }
-    @Override
-    @Transactional
-    public int insert(String json) {
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            PaymentMapper.Orders orders = mapper.readValue(json, PaymentMapper.Orders.class);
-            return paymentMapper.insert(orders);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        return -1;
-    }
+//    @Override
+//    @Transactional
+//    public int insert(String json) {
+//        ObjectMapper mapper = new ObjectMapper();
+//        try {
+//            PaymentMapper.Orders orders = mapper.readValue(json, PaymentMapper.Orders.class);
+//            return paymentMapper.insert(orders);
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());
+//        }
+//        return -1;
+//    }
 
     @Override
     @Transactional

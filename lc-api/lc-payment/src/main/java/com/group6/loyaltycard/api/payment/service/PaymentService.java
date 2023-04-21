@@ -20,8 +20,6 @@ public interface PaymentService {
 
     int insert(Orders credits);
 
-    int insert(String jsonStr);
-
     int update(Orders credits);
 
     int delete(Integer orderId);

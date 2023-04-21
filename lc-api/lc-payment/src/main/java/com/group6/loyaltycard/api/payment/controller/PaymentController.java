@@ -25,7 +25,7 @@ public class PaymentController {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             PaymentMapper.Orders order = objectMapper.readValue(json, PaymentMapper.Orders.class);
-            paymentService.insert(json);
+            paymentService.insert(order);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
