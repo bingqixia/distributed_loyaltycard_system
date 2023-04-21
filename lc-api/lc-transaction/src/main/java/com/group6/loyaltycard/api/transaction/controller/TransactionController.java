@@ -59,30 +59,18 @@ public class TransactionController {
                 transaction.getAmounts()
         );
 
-        List<CreditJson> credits = new ArrayList<>();
-
-        CreditJson credit1 = new CreditJson(
+        CreditJson credit = new CreditJson(
                 transaction.getOrderId(),
                 transaction.getUserId(),
                 transaction.getCardId(),
                 transaction.getOrderTime(),
-                transaction.getPoints().get(0)
+                transaction.getPoints()
         );
-        credits.add(credit1);
-
-        CreditJson credit2 = new CreditJson(
-                transaction.getOrderId(),
-                transaction.getUserId(),
-                transaction.getCardId(),
-                transaction.getOrderTime(),
-                transaction.getPoints().get(1)
-        );
-        credits.add(credit2);
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             paymentJsonStr = objectMapper.writeValueAsString(payment);
-            creditJsonStr = objectMapper.writeValueAsString(credits);
+            creditJsonStr = objectMapper.writeValueAsString(credit);
         } catch (JsonProcessingException e) {
             System.out.println(e.getMessage());
         }

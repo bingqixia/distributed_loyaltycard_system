@@ -9,13 +9,13 @@ public class TransactionJson {
     private Integer cardId;
     private Date orderTime;
     private Integer amounts;
-    private List<Integer> points;
+    private Integer points;
 
-    public List<Integer> getPoints() {
+    public Integer getPoints() {
         return points;
     }
 
-    public void setPoints(List<Integer> points) {
+    public void setPoints(Integer points) {
         this.points = points;
     }
 
