@@ -1,22 +1,22 @@
 package com.group6.loyaltycard.api.transaction.repository;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.List;
 
-public class TransactionJson {
+public class CreditJson {
     private Integer orderId;
     private Integer userId;
     private Integer cardId;
     private Date orderTime;
-    private Integer amounts;
-    private List<Integer> points;
+    private Integer credits;
 
-    public List<Integer> getPoints() {
-        return points;
-    }
-
-    public void setPoints(List<Integer> points) {
-        this.points = points;
+    public CreditJson(Integer orderId, Integer userId, Integer cardId, Date orderTime, Integer credits) {
+        this.orderId = orderId;
+        this.userId = userId;
+        this.cardId = cardId;
+        this.orderTime = orderTime;
+        this.credits = credits;
     }
 
 
@@ -48,15 +48,16 @@ public class TransactionJson {
         return orderTime;
     }
 
-    public void setOrderTime(Date  orderTime) {
-        this.orderTime = orderTime;
+    public void setOrderTime(Date orderTime) {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        this.orderTime = Timestamp.valueOf(currentDateTime);
     }
 
-    public Integer getAmounts() {
-        return amounts;
+    public Integer getCredits() {
+        return credits;
     }
 
-    public void setAmounts(Integer amount) {
-        this.amounts = amount;
+    public void setCredits(Integer credits) {
+        this.credits = credits;
     }
 }

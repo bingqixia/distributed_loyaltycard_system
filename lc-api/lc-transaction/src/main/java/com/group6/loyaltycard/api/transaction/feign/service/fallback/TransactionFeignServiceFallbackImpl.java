@@ -22,7 +22,12 @@ public class TransactionFeignServiceFallbackImpl implements TransactionPaymentFe
 
     @Override
     public String addPaymentTransaction(String name) {
-        return "hello " + name + ", this is lc-transaction helloPayment, but request error";
+        return "hello " + name + ", this is lc-transaction addPaymentTransaction, but request error";
+    }
+
+    @Override
+    public String updateCreditsTransaction(String name) {
+        return "hello " + name + ", this is lc-transaction updateCreditsTransaction, but request error";
     }
 //    public String addPaymentTransaction(@RequestBody String json) {
 //        paymentService.insert(json);

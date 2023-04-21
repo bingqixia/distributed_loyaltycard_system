@@ -17,6 +17,15 @@ spring:
       jdbc-url: jdbc:mysql://ec2-18-207-1-99.compute-1.amazonaws.com:3306/test1?useSSL=false&characterEncoding=utf8&serverTimezone=Europe/Dublin
       username: root
       password: Admin1234##
+      hikari:
+        maximum-pool-size: 10
+        minimum-idle: 2
+        max-lifetime: 1800000 # 30 minutes
+        idle-timeout: 600000 # 10 minutes
+        connection-timeout: 30000 # 30 seconds
+        validation-timeout: 5000 # 5 seconds
+        pool-name: MyHikariPool
+        connection-test-query: SELECT 1
     slave:
       jdbc-url: jdbc:mysql://ec2-54-234-6-236.compute-1.amazonaws.com:3306/test1?useSSL=false&characterEncoding=utf8&serverTimezone=Europe/Dublin
       username: root

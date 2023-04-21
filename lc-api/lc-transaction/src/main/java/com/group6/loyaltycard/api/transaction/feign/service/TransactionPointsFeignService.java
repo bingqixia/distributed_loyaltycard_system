@@ -4,6 +4,8 @@ import com.group6.loyaltycard.api.transaction.feign.service.fallback.Transaction
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(value = "lc-points", fallback = TransactionFeignServiceFallbackImpl.class)
 public interface TransactionPointsFeignService {
@@ -16,6 +18,9 @@ public interface TransactionPointsFeignService {
      * @param name
      * @return
      */
-    @GetMapping("/pc/{name}")
+    @GetMapping("/hello/{name}")
     String helloPoints(@PathVariable(name = "name") String name);
+
+    @PostMapping("/updateCredits")
+    String updateCreditsTransaction(@RequestBody String json);
 }

@@ -4,10 +4,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.group6.loyaltycard.api.transaction.feign.service.TransactionPaymentFeignService;
 import com.group6.loyaltycard.api.transaction.feign.service.TransactionPointsFeignService;
+import com.group6.loyaltycard.api.transaction.repository.CreditJson;
 import com.group6.loyaltycard.api.transaction.repository.PaymentJson;
 import com.group6.loyaltycard.api.transaction.repository.TransactionJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class TransactionController {
@@ -45,8 +49,9 @@ public class TransactionController {
 
     @PostMapping("/addTransaction")
     public String addTransactionPayment(@RequestBody TransactionJson transaction) {
-        String jsonString = "";
-        PaymentJson paymentJson = new PaymentJson(
+        String creditJsonStr = "";
+        String paymentJsonStr = "";
+        PaymentJson payment = new PaymentJson(
                 transaction.getOrderId(),
                 transaction.getUserId(),
                 transaction.getCardId(),
@@ -54,13 +59,35 @@ public class TransactionController {
                 transaction.getAmounts()
         );
 
+        List<CreditJson> credits = new ArrayList<>();
+
+        CreditJson credit1 = new CreditJson(
+                transaction.getOrderId(),
+                transaction.getUserId(),
+                transaction.getCardId(),
+                transaction.getOrderTime(),
+                transaction.getPoints().get(0)
+        );
+        credits.add(credit1);
+
+        CreditJson credit2 = new CreditJson(
+                transaction.getOrderId(),
+                transaction.getUserId(),
+                transaction.getCardId(),
+                transaction.getOrderTime(),
+                transaction.getPoints().get(1)
+        );
+        credits.add(credit2);
+
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            jsonString = objectMapper.writeValueAsString(paymentJson);
+            paymentJsonStr = objectMapper.writeValueAsString(payment);
+            creditJsonStr = objectMapper.writeValueAsString(credits);
         } catch (JsonProcessingException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println(jsonString);
-        return paymentFeignService.addPaymentTransaction(jsonString);
+        System.out.println(creditJsonStr);
+        paymentFeignService.addPaymentTransaction(paymentJsonStr);
+        return pointsFeignService.updateCreditsTransaction(creditJsonStr);
     }
 }
