@@ -16,8 +16,11 @@ public interface TransactionPaymentFeignService {
      * @param name
      * @return
      */
-    @GetMapping("/test/{name}")
+    @GetMapping("/hello/{name}")
     String helloPayment(@PathVariable(name = "name") String name);
+
+    @GetMapping("/query/{userId}")
+    String queryOrdersByUserId(@PathVariable("userId") Integer userId);
 
     @PostMapping("/addPayment")
     String addPaymentTransaction(@RequestBody String json);

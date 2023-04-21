@@ -16,9 +16,23 @@ public class PointsController {
     private PointsService pointsService;
 
     @GetMapping("/hello/{name}")
-    public String hello1(@PathVariable String name) {
+    public String hello(@PathVariable String name) {
         return "hello " + name + ", this is lc-points";
     }
+
+    @GetMapping("/query/{userId}")
+    String queryPointsByUserId(@PathVariable("userId") Integer userId){
+        List<PointsMapper.Credits> credits = pointsService.findByUserId(userId);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonStr = "Not Found";
+        try {
+            jsonStr = objectMapper.writeValueAsString(credits);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return jsonStr;
+    }
+
 
 //    @PostMapping ("/addCredits")
 //    public String addPointsTransaction(@RequestBody PointsMapper.Credits credits) {

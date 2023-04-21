@@ -4,6 +4,7 @@ package com.group6.loyaltycard.api.transaction.feign.service.fallback;
 import com.group6.loyaltycard.api.transaction.feign.service.TransactionPaymentFeignService;
 import com.group6.loyaltycard.api.transaction.feign.service.TransactionPointsFeignService;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -28,5 +29,15 @@ public class TransactionFeignServiceFallbackImpl implements TransactionPaymentFe
     @Override
     public String updateCreditsTransaction(String name) {
         return "create transaction successfully.";
+    }
+
+    @Override
+    public String queryPointsByUserId(@PathVariable("userId") Integer userId) {
+        return "queryPointsByUserId, request error, was fused";
+    }
+
+    @Override
+    public String queryOrdersByUserId(@PathVariable("userId") Integer userId) {
+        return "queryOrdersByUserId, request error, was fused";
     }
 }

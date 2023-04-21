@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import com.group6.loyaltycard.api.payment.repository.PaymentMapper;
 import com.group6.loyaltycard.api.payment.service.PaymentService;
 
+import java.util.List;
+
 
 @RestController
 public class PaymentController {
@@ -15,10 +17,24 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    @GetMapping("/test/{name}")
+    @GetMapping("/hello/{name}")
     public String hello(@PathVariable String name) {
-        return "hello " + name + ", this is lc-payments";
+        return "hello " + name + ", this is lc-points";
     }
+
+    @GetMapping("/query/{userId}")
+    String queryOrdersByUserId(@PathVariable("userId") Integer userId){
+        List<PaymentMapper.Orders> orders = paymentService.findByUserId(userId);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonStr = "Not Found";
+        try {
+            jsonStr = objectMapper.writeValueAsString(orders);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return jsonStr;
+    }
+
 
     @PostMapping("/addPayment")
     public String addPaymentTransaction(@RequestBody String json) {

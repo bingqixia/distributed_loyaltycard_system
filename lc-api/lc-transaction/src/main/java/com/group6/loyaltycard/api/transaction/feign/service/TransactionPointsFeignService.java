@@ -21,6 +21,9 @@ public interface TransactionPointsFeignService {
     @GetMapping("/hello/{name}")
     String helloPoints(@PathVariable(name = "name") String name);
 
+    @GetMapping("/query/{userId}")
+    String queryPointsByUserId(@PathVariable("userId") Integer userId);
+
     @PostMapping("/updateCredits")
     String updateCreditsTransaction(@RequestBody String json);
 }
